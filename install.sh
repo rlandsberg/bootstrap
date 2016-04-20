@@ -16,7 +16,7 @@ softwareupdate -i "$PROD" -v;
 
 
 #Next we need to set up our directories
-dir="$HOME/Workspace
+dir="$HOME/Workspace"
 mkdir -p $dir
 cd $dir
 git clone --recursive https://github.com/rlandsberg/bootstrap.git
