@@ -80,6 +80,8 @@ dir=" /Users/$USERNAME/Workspace"
 mkdir -p $dir
 chown $USERNAME $dir 
 
+
+
 #Install Homebrew as our admin account
 sudo -u $SUDO_USER ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -95,9 +97,13 @@ sudo mkdir -p /opt/homebrew-cask/Caskroom
 sudo chgrp -R brew /opt/homebrew-cask
 sudo chmod -R g+w /opt/homebrew-cask
 
+# let's pull down our dotfiles and scripts
+
+cd $dir
+sudo -u $USERNAME git clone --recursive https://github.com/rlandsberg/bootstrap.git
+sudo -u $USERNAME cd bootstrap
 
 
-#git clone --recursive https://github.com/rlandsberg/bootstrap.git
 #cd bootstrap
 #bash bootstrap.sh
 
