@@ -74,6 +74,10 @@ createhomedir -c 2>&1 | grep -v "shell-init"
 
 echo "Created user #$USERID: $USERNAME ($FULLNAME)"
 
+#Let's add our user to sudoers Yolo style
+echo "$USERNAME     ALL=(ALL) ALL" >> /etc/sudoers
+echo "Added $USERNAME to sudoers"
+
 
 #Next we need to set up our directories
 dir=" /Users/$USERNAME/Workspace"
