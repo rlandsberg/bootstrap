@@ -17,13 +17,13 @@ softwareupdate -i "$PROD" -v;
 echo "Set up your standard user account"
 
 echo "Enter your desired user name: "
-read USERNAME
+read -r USERNAME
 
 echo "Enter a full name for this user: "
-read FULLNAME
+read -r FULLNAME
 
 echo "Enter a password for this user: "
-read -s PASSWORD
+read -r -s PASSWORD
 
 # ====
 
@@ -49,19 +49,19 @@ USERID=$((MAXID+1))
 # by one in an obnoxious and time consuming way.
 echo "Creating necessary files..."
 
-dscl . -create /Users/$USERNAME
-dscl . -create /Users/$USERNAME UserShell /bin/bash
-dscl . -create /Users/$USERNAME RealName "$FULLNAME"
-dscl . -create /Users/$USERNAME UniqueID "$USERID"
-dscl . -create /Users/$USERNAME PrimaryGroupID 20
-dscl . -create /Users/$USERNAME NFSHomeDirectory /Users/$USERNAME
-dscl . -passwd /Users/$USERNAME $PASSWORD
+dscl . -create /Users/"$USERNAME"
+dscl . -create /Users/"$USERNAME" UserShell /bin/bash
+dscl . -create /Users/"$USERNAME" RealName "$FULLNAME"
+dscl . -create /Users/"$USERNAME" UniqueID "$USERID"
+dscl . -create /Users/"$USERNAME" PrimaryGroupID 20
+dscl . -create /Users/"$USERNAME" NFSHomeDirectory /Users/"$USERNAME"
+dscl . -passwd /Users/"$USERNAME" "$PASSWORD"
 
 
 # Add user to any specified groups
 echo "Adding user to specified groups..."
-dseditgroup -o edit -t user -a $USERNAME staff
-dseditgroup -o edit -t user -a $USERNAME brew
+dseditgroup -o edit -t user -a "$USERNAME" staff
+dseditgroup -o edit -t user -a "$USERNAME" brew
 
 #Add our admin account to the group too
 dseditgroup -o edit -t user -a "$(whoami)" brew
@@ -77,13 +77,13 @@ echo "Created user #$USERID: $USERNAME ($FULLNAME)"
 
 #Next we need to set up our directories
 dir=" /Users/$USERNAME/Workspace"
-mkdir -p $dir
-chown $USERNAME $dir 
+mkdir -p "$dir"
+chown "$USERNAME" "$dir"
 
 
 
 #Install Homebrew as our admin account
-sudo -u $SUDO_USER ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+sudo -u "$SUDO_USER" ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Now let change our permissions so that our non-admin user can use Homebrew
 
@@ -99,9 +99,9 @@ sudo chmod -R g+w /opt/homebrew-cask
 
 # let's pull down our dotfiles and scripts
 
-cd $dir
-sudo -u $USERNAME git clone --recursive https://github.com/rlandsberg/bootstrap.git
-sudo -u $USERNAME cd bootstrap
+cd "$dir" || exit
+sudo -u "$USERNAME" git clone --recursive https://github.com/rlandsberg/bootstrap.git
+sudo -u "$USERNAME" cd bootstrap
 
 
 #cd bootstrap
