@@ -3,7 +3,7 @@
     # PATH
     export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/workspace/exercism"
     export EDITOR="subl -w"
-    export GOPATH="/Users/richard/workspace/"
+    export GOPATH="/Users/$USER_NAME/Workspace/"
     export PYTHONPATH=$PYTHONPATH
     
     # export MANPATH="/usr/local/man:$MANPATH"

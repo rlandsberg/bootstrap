@@ -1,0 +1,61 @@
+#Certifcates for Santa
+
+Sublime Text 3
+cert_sha256=0982c600d27af029bd052523cca09a8170cdde5fe7466039343ef7de07ec6399
+
+Google Chrome
+cert_sha256=15b8ce88e10f04c88a5542234fbdfc1487e9c2f64058a05027c7c34fc4201153
+
+Slack
+cert_sha256=61977d6006459c4cefe9b988a453589946224957bfc07b262cd7ca1b7a61e04e
+
+iTerm2
+cert_sha256=2aa4b9973b7ba07add447ee4da8b5337c3ee2c3a991911e80e7282e8a751fc32
+
+Citrix
+cert_sha256=c9ae2537d391b9316f22f0ef10d79159e84c4a673fe5ac22b8594f1bfa9af58b
+cert_sha256=2aa4b9973b7ba07add447ee4da8b5337c3ee2c3a991911e80e7282e8a751fc32
+
+Blockblock
+cert_sha256=0fa8dcd3a5138bd3fef154be5784611b632ba2461b4c068ec8ed8d04426231ec
+
+KextViewer
+cert_sha256=fa61674418d89025a5961291ae6fc5b78957a2636e713a97e198d00f87d48d3b
+
+Tasx Explorer
+cert_sha256=2aa4b9973b7ba07add447ee4da8b5337c3ee2c3a991911e80e7282e8a751fc32
+
+Vmware Fusion
+cert_sha256=2aa4b9973b7ba07add447ee4da8b5337c3ee2c3a991911e80e7282e8a751fc32
+
+Skype
+cert_sha256=2aa4b9973b7ba07add447ee4da8b5337c3ee2c3a991911e80e7282e8a751fc32
+
+Hopper
+cert_sha256=95cdd7f30ef866c63573510112dcb62403b439a0196073a3cbc9acd5803b4c11
+
+DHS
+cert_sha256=fa61674418d89025a5961291ae6fc5b78957a2636e713a97e198d00f87d48d3b
+
+KnockKnock
+cert_sha256=0fa8dcd3a5138bd3fef154be5784611b632ba2461b4c068ec8ed8d04426231ec
+
+Flux
+cert_sha256=2aa4b9973b7ba07add447ee4da8b5337c3ee2c3a991911e80e7282e8a751fc32
+
+PyCharm
+cert_sha256=8ca982d17dea5180f225134ea207c521dccd753f70da86491c7f77cb3a091ba1
+
+Paths for apps to sign
+
+Git
+/usr/local/Cellar/git/2.8.1/bin/git
+
+Python3
+/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/Resources/Python.app/Contents/MacOS/Python
+
+Python2
+/usr/local/Cellar/python/2.7.11/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python
+
+Mas 
+/usr/local/Cellar/mas/1.2.0/bin/mas

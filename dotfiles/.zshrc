@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/richard/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,7 +49,7 @@ ZSH_THEME="pygmalion"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man colorize github pip python brew osx zsh-syntax-highlighting common-aliases tmuxinator)
+plugins=(git colored-man colorize github pip python brew osx  common-aliases tmuxinator zsh-syntax-highlighting)
 
 # User configuration
 
@@ -84,6 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Add env.sh
-    . ~/workspace/config/env.sh
+    . ~/Workspace/bootstrap/config/env.sh
 # Add z.sh
-    . ~/workspace/config/z.sh
+    . ~/Workspace/bootstrap/config/z.sh
+
