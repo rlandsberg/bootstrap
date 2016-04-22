@@ -25,13 +25,10 @@ for location in $dotfiles/.{zshrc,tmux.conf} ; do
   link "$location" "$HOME/$file"
 done
 
-echo 'Applying sublime config...'
-  st=$(pwd)/sublime/packages
-  as="$HOME/Library/Application Support/Sublime Text 3/Packages"
-  asprefs="$as/User/Preferences.sublime-settings"
-  if [[ -d "$as" ]]; then
-    for theme in $st/Theme*; do
-      cp -r $theme $as
-    done
-    rm $asprefs
-    cp -r $st/pm-themes $as
+# Setting up Sublime 3 Packages and settings
+
+rm -rf "$HOME/Library/Application\ Support/Sublime\ Text\ 3/User"
+ln -s "$HOME/Workspace/bootstrap/Sublime/User/ User"
+
+echo "Remember to install Package Manager from https://packagecontrol.io/installation#st3"
+
