@@ -1,0 +1,23 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Alignment",
+		"BracketHighlighter",
+		"Dictionaries",
+		"FileDiffs",
+		"Git",
+		"GitGutter",
+		"Jedi - Python autocompletion",
+		"Monokai Neue",
+		"Package Control",
+		"Pretty JSON",
+		"Python Imports Sorter",
+		"PythonTraceback",
+		"SublimeLinter",
+		"SublimeLinter-shellcheck"
+	]
+}
