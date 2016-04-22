@@ -105,7 +105,10 @@ sudo chmod -R g+w /opt/homebrew-cask
 
 cd "$dir" || exit
 sudo -u "$USERNAME" git clone --recursive https://github.com/rlandsberg/bootstrap.git
-sudo -u "$USERNAME" cd bootstrap
+
+sudo -u "$USERNAME" brew doctor
+
+sudo -u $USERNAME bash bootstrap.sh
 
 
 #cd bootstrap

@@ -32,3 +32,6 @@ ln -s "$HOME/Workspace/bootstrap/Sublime/User/ User"
 
 echo "Remember to install Package Manager from https://packagecontrol.io/installation#st3"
 
+# Setting up our iTerm2 preferences
+
+defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/bootstrap/dotfiles"
