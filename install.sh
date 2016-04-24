@@ -86,7 +86,7 @@ PROD=$(softwareupdate -l |
 softwareupdate -i "$PROD" -v;
 
 #Install Homebrew as our admin account
-sudo -u "$SUDO_USER" ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
+sudo -u "$SUDO_USER" ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"   </dev/null
 
 # Now let change our permissions so that our non-admin user can use Homebrew
 
