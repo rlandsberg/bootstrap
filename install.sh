@@ -2,18 +2,6 @@
 
 #Start of our install
 
-#First we need our command line tools
-
-
-touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
-PROD=$(softwareupdate -l |
-  grep "\*.*Command Line" |
-  head -n 1 | awk -F"*" '{print $2}' |
-  sed -e 's/^ *//' |
-  tr -d '\n')
-softwareupdate -i "$PROD" -v;
-
-#Set up a standard user account
 echo "Set up your standard user account"
 
 echo "Enter your desired user name: "
@@ -47,15 +35,17 @@ USERID=$((MAXID+1))
 
 # Create the user account by running dscl (normally you would have to do each of these commands one
 # by one in an obnoxious and time consuming way.
-echo "Creating necessary files..."
+echo "Creating a user in the new 10.10+ way"
 
-dscl . -create /Users/"$USERNAME"
-dscl . -create /Users/"$USERNAME" UserShell /bin/bash
-dscl . -create /Users/"$USERNAME" RealName "$FULLNAME"
-dscl . -create /Users/"$USERNAME" UniqueID "$USERID"
-dscl . -create /Users/"$USERNAME" PrimaryGroupID 20
-dscl . -create /Users/"$USERNAME" NFSHomeDirectory /Users/"$USERNAME"
-dscl . -passwd /Users/"$USERNAME" "$PASSWORD"
+sudo sysadminctl -addUser $USERNAME -fullName $FULLNAME -UID $UID -password $PASSWORD -home /Users/$USERNAME
+
+#dscl . -create /Users/"$USERNAME"
+#dscl . -create /Users/"$USERNAME" UserShell /bin/bash
+#dscl . -create /Users/"$USERNAME" RealName "$FULLNAME"
+#dscl . -create /Users/"$USERNAME" UniqueID "$USERID"
+#dscl . -create /Users/"$USERNAME" PrimaryGroupID 20
+#dscl . -create /Users/"$USERNAME" NFSHomeDirectory /Users/"$USERNAME"
+#dscl . -passwd /Users/"$USERNAME" "$PASSWORD"
 
 
 # Add user to any specified groups
@@ -69,8 +59,7 @@ dseditgroup -o edit -t user -a "$(whoami)" brew
 
 
 # Create the home directory
-echo "Creating home directory..."
-createhomedir -c 2>&1 | grep -v "shell-init"
+##createhomedir -c 2>&1 | grep -v "shell-init"
 
 echo "Created user #$USERID: $USERNAME ($FULLNAME)"
 
@@ -85,6 +74,15 @@ mkdir -p "$dir"
 chown "$USERNAME" "$dir"
 
 
+#Let's install command line tools
+
+touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
+PROD=$(softwareupdate -l |
+  grep "\*.*Command Line" |
+  head -n 1 | awk -F"*" '{print $2}' |
+  sed -e 's/^ *//' |
+  tr -d '\n')
+softwareupdate -i "$PROD" -v;
 
 #Install Homebrew as our admin account
 sudo -u "$SUDO_USER" ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -104,6 +102,7 @@ sudo chmod -R g+w /opt/homebrew-cask
 # let's pull down our dotfiles and scripts
 
 cd "$dir" || exit
+
 sudo -u "$USERNAME" git clone --recursive https://github.com/rlandsberg/bootstrap.git
 
 sudo -u "$USERNAME" brew doctor
