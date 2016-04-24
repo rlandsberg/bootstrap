@@ -80,7 +80,7 @@ echo "Added $USERNAME to sudoers"
 
 
 #Next we need to set up our directories
-dir=" /Users/$USERNAME/Workspace"
+dir="/Users/$USERNAME/Workspace"
 mkdir -p "$dir"
 chown "$USERNAME" "$dir"
 
