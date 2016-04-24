@@ -15,7 +15,7 @@ read -r -s PASSWORD
 
 # ====
 
-#  Setting up our Homebrew group
+#  Setting up our Homebrew group so that we can add our new user to it
 
 echo "Creating a brew group to use Homebrew as a non-admin account"
 dseditgroup -o create -r "Group to use Brew as non-admin" brew

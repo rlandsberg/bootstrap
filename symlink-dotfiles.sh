@@ -19,7 +19,7 @@ link() {
   ln -s "$from" "$to"
 }
 
-for location in $dotfiles/.{zshrc,tmux.conf} ; do
+for location in $dotfiles/.{zshrc,tmux.conf,gitignore,gitconfig,zprofile} ; do
   file="${location##*/}"
   file="${file%.sh}"
   link "$location" "$HOME/$file"
@@ -35,3 +35,31 @@ echo "Remember to install Package Manager from https://packagecontrol.io/install
 # Setting up our iTerm2 preferences
 
 defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/bootstrap/dotfiles"
+
+# Add our applications to the Dock.
+
+# Chrome 
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+
+#iTerm2
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/opt/homebrew-cask/Caskroom/iterm2-beta/2.9.20160313/iTerm.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+
+#Sublime 
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>'/opt/homebrew-cask/Caskroom/sublime-text3/3103/Sublime\ Text.app'</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+
+#Vmware Fusion
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>'/opt/homebrew-cask/Caskroom/vmware-fusion/8.1.0-3272237/VMware\ Fusion.app'</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+
+#TaskExplorer
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/opt/homebrew-cask/Caskroom/taskexplorer/1.4.0/TaskExplorer.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+
+# Visual Studio Code 
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>'/opt/homebrew-cask/Caskroom/visual-studio-code/1.0.0\,fa6d0f03813dfb9df4589c30121e9fcffa8a8ec8/Visual\ Studio\ Code.app' 
+</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+
+killall Dock
+
+
+
+
+
