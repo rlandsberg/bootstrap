@@ -26,7 +26,8 @@ dseditgroup -o create -r "Group to use Brew as non-admin" brew
 # Create a UID that is not currently in use
 echo "Creating an unused UID for new user..."
 
-if  $UID -ne 0 ; then echo "Please run $0 as root." && exit 1; fi
+#Not an issue for us
+#if  $UID -ne 0 ; then echo "Please run $0 as root." && exit 1; fi
 
 # Find out the next available user ID
 MAXID=$(dscl . -list /Users UniqueID | awk '{print $2}' | sort -ug | tail -1)
@@ -60,7 +61,7 @@ dseditgroup -o edit -t user -a "$(whoami)" brew
 
 # Create the home directory
 echo "Creating home directory"
-createhomedir -c 2>&1 | grep -v "shell-init"
+c -c 2>&1 | grep -v "shell-init"
 
 echo "Created user #$USERID: $USERNAME ($FULLNAME)"
 
