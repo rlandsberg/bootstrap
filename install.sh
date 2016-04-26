@@ -1,5 +1,8 @@
 #!/bin/bash
 
+dev="$HOME/Workspace"
+config="$dev/config"
+
 #Start of our install
 
 echo "Set up your standard user account"
@@ -40,15 +43,6 @@ echo "Creating a user in the new 10.10+ way"
 
 sudo sysadminctl -addUser $USERNAME -fullName $FULLNAME -UID $UID -password $PASSWORD -home /Users/$USERNAME
 
-#dscl . -create /Users/"$USERNAME"
-#dscl . -create /Users/"$USERNAME" UserShell /bin/bash
-#dscl . -create /Users/"$USERNAME" RealName "$FULLNAME"
-#dscl . -create /Users/"$USERNAME" UniqueID "$USERID"
-#dscl . -create /Users/"$USERNAME" PrimaryGroupID 20
-#dscl . -create /Users/"$USERNAME" NFSHomeDirectory /Users/"$USERNAME"
-#dscl . -passwd /Users/"$USERNAME" "$PASSWORD"
-
-
 # Add user to any specified groups
 echo "Adding user to specified groups..."
 dseditgroup -o edit -t user -a "$USERNAME" staff
@@ -56,8 +50,6 @@ dseditgroup -o edit -t user -a "$USERNAME" brew
 
 #Add our admin account to the group too
 dseditgroup -o edit -t user -a "$(whoami)" brew
-
-
 
 # Create the home directory
 echo "Creating home directory"
@@ -69,14 +61,13 @@ echo "Created user #$USERID: $USERNAME ($FULLNAME)"
 echo "$USERNAME     ALL=(ALL) ALL" >> /etc/sudoers
 echo "Added $USERNAME to sudoers"
 
-
 #Next we need to set up our directories
-dir="/Users/$USERNAME/Workspace"
 mkdir -p "$dir"
+mkdir -p "$config"
 chown "$USERNAME" "$dir"
+chown "$USERNAME" "$conf" 
 
-
-#Let's install command line tools
+# Let's install command line tools
 
 touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
 PROD=$(softwareupdate -l |
@@ -86,7 +77,8 @@ PROD=$(softwareupdate -l |
   tr -d '\n')
 softwareupdate -i "$PROD" -v;
 
-#Install Homebrew as our admin account
+# Install Homebrew as our admin account
+
 sudo -u "$SUDO_USER" ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"   </dev/null
 
 # Now let change our permissions so that our non-admin user can use Homebrew
@@ -107,11 +99,14 @@ cd "$dir" || exit
 
 sudo -u "$USERNAME" git clone --recursive https://github.com/rlandsberg/bootstrap.git
 
+# Moving our dotfiles and config up to our working directory.  Any changes can be copied back and synced to the repo
+ 
+cp $dev/bootstrap/dotfiles $dev
+cp $dev/bootstrap/config $config
+
 sudo -u "$USERNAME" brew doctor
 
-sudo -u $USERNAME bash bootstrap.sh
+#sudo -u $USERNAME bash bootstrap.sh
 
 
-#cd bootstrap
-#bash bootstrap.sh
 

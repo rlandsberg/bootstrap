@@ -2,7 +2,7 @@
 # Most of this is from https://github.com/paulmillr/dotfiles/blob/master/symlink-dotfiles.sh
 
 dev="$HOME/Workspace"
-dotfiles="$dev/bootstrap/dotfiles"
+dotfiles="$dev/dotfiles"
 
 if [[ -d "$dotfiles" ]]; then
   echo "Symlinking dotfiles from $dotfiles"
@@ -53,9 +53,6 @@ defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</
 #TaskExplorer
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/opt/homebrew-cask/Caskroom/taskexplorer/1.4.0/TaskExplorer.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 
-# Visual Studio Code 
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>'/opt/homebrew-cask/Caskroom/visual-studio-code/1.0.0\,fa6d0f03813dfb9df4589c30121e9fcffa8a8ec8/Visual\ Studio\ Code.app' 
-</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 
 killall Dock
 

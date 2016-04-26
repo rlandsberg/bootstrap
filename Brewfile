@@ -1,4 +1,5 @@
 # Taps
+
 tap 'argon/mas'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
@@ -57,6 +58,7 @@ cask 'sublime-text3'
 cask 'taskexplorer'
 cask 'visual-studio-code'
 cask 'vmware-fusion'
+cask 'tunnelblick'
 
 # Package installers last
 cask 'blockblock'
@@ -66,12 +68,15 @@ cask 'santa'
 
 # Install our App Store Apps
 
-mas 'Audit Explorer', id: 429353921
-mas 'Microsoft Remote Desktop', id: 715768417
-mas 'Xcode', id: 497799835
-mas 'Slack', id: 803453959
-mas 'Toad', id: 747961939
+#mas 'Audit Explorer', id: 429353921
+#mas 'Microsoft Remote Desktop', id: 715768417
+#mas 'Xcode', id: 497799835
+#mas 'Slack', id: 803453959
+#mas 'Toad', id: 747961939
+#mas 'Twitter', id: 409789998
+#mas 'Keynote', id: 409183694
 
 # Paid apps
-mas 'Synalyze It! Pro', id: 475193367
-mas 'OmniFocus', id: 867299399
+#mas 'Synalyze It! Pro', id: 475193367
+#mas 'OmniFocus', id: 867299399
+
