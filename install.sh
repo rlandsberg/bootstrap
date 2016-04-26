@@ -62,7 +62,7 @@ dseditgroup -o edit -t user -a "$(whoami)" brew
 
 # Create the home directory
 echo "Creating home directory"
-c -c 2>&1 | grep -v "shell-init"
+createhomedir -c 2>&1 | grep -v "shell-init"
 
 echo "Created user #$USERID: $USERNAME ($FULLNAME)"
 
@@ -74,7 +74,7 @@ echo "Added $USERNAME to sudoers"
 mkdir -p "$dev"
 mkdir -p "$config"
 chown "$USERNAME" "$dev"
-chown "$USERNAME" "$conf" 
+chown "$USERNAME" "$config" 
 
 # Let's install command line tools
 
