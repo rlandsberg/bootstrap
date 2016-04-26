@@ -71,9 +71,9 @@ echo "$USERNAME     ALL=(ALL) ALL" >> /etc/sudoers
 echo "Added $USERNAME to sudoers"
 
 #Next we need to set up our directories
-mkdir -p "$dir"
+mkdir -p "$dev"
 mkdir -p "$config"
-chown "$USERNAME" "$dir"
+chown "$USERNAME" "$dev"
 chown "$USERNAME" "$conf" 
 
 # Let's install command line tools
