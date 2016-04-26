@@ -5,14 +5,23 @@ config="$dev/config"
 
 #Start of our install
 
-echo "Set up your standard user account"
+#Setup computer name
+echo "Enter new hostname of the machine: "
+read -r HOSTNAME
+echo "Setting new hostname to $HOSTNAME..."
+scutil --set HostName "$HOSTNAME"
+COMPNAME=$(sudo scutil --get HostName | tr '-' '.')
+echo "Setting computer name to $COMPNAME"
+scutil --set ComputerName "$COMPNAME"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPNAME"
 
+
+
+echo "Set up your standard user account"
 echo "Enter your desired user name: "
 read -r USERNAME
-
 echo "Enter a full name for this user: "
 read -r FULLNAME
-
 echo "Enter a password for this user: "
 read -r -s PASSWORD
 
