@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dev="$HOME/Workspace"
+dev="/Users/$USERNAME/Workspace"
 config="$dev/config"
 
 #Start of our install
