@@ -1,7 +1,5 @@
 #!/bin/bash
 
-dev="/Users/$USERNAME/Workspace"
-config="$dev/config"
 
 #Start of our install
 
@@ -71,10 +69,8 @@ echo "$USERNAME     ALL=(ALL) ALL" >> /etc/sudoers
 echo "Added $USERNAME to sudoers"
 
 #Next we need to set up our directories
-mkdir -p "$dev"
-mkdir -p "$config"
-chown "$USERNAME" "$dev"
-chown "$USERNAME" "$config" 
+sudo -u "$USERNAME" mkdir -p "/Users/$USERNAME/Workspace"
+sudo -u "$USERNAME" mkdir -p "/Users/$USERNAME/Workspace/config"
 
 # Let's install command line tools
 
@@ -104,7 +100,7 @@ sudo chmod -R g+w /opt/homebrew-cask
 
 # let's pull down our dotfiles and scripts
 
-cd "$dir" || exit
+cd "/Users/$USERNAME/Workspace" || exit
 
 sudo -u "$USERNAME" git clone --recursive https://github.com/rlandsberg/bootstrap.git
 
