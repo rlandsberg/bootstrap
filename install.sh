@@ -101,13 +101,12 @@ sudo chmod -R g+w /opt/homebrew-cask
 # let's pull down our dotfiles and scripts
 
 cd "/Users/$USERNAME/Workspace" || exit
-
 sudo -u "$USERNAME" git clone --recursive https://github.com/rlandsberg/bootstrap.git
 
 # Moving our dotfiles and config up to our working directory.  Any changes can be copied back and synced to the repo
  
-cp $dev/bootstrap/dotfiles $dev
-cp $dev/bootstrap/config $config
+cp -r "/Users/$USERNAME/Workspace/bootstrap/dotfiles" /Users/$USERNAME/dotfiles
+cp -r "/Users/$USERNAME/Workspace/bootstrap/config" /Users/$USERNAME/config
 
 sudo -u "$USERNAME" brew doctor
 
