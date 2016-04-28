@@ -1,8 +1,7 @@
 #!/bin/bash
 # Most of this is from https://github.com/paulmillr/dotfiles/blob/master/symlink-dotfiles.sh
 
-dev="$HOME/Workspace"
-dotfiles="$dev/dotfiles"
+dotfiles="$HOME/dotfiles"
 
 if [[ -d "$dotfiles" ]]; then
   echo "Symlinking dotfiles from $dotfiles"
@@ -46,9 +45,6 @@ defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</
 
 #Sublime 
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>'/opt/homebrew-cask/Caskroom/sublime-text3/3103/Sublime\ Text.app'</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-
-#Vmware Fusion
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>'/opt/homebrew-cask/Caskroom/vmware-fusion/8.1.0-3272237/VMware\ Fusion.app'</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 
 #TaskExplorer
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/opt/homebrew-cask/Caskroom/taskexplorer/1.4.0/TaskExplorer.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
