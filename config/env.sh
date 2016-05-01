@@ -15,7 +15,6 @@
 
     # Owner
     export USER_NAME="Richard Landsberg"
-    #eval "$(rbenv init -)"
 
     # FileSearch
     function f() { find . -iname "*$1*" ${@:2} }
@@ -28,3 +27,6 @@
     alias cppcompile='c++ -std=c++11 -stdlib=libc++'
     alias subl='subl --command toggle_full_screen'
     alias signapp='codesign --force --sign "Developer ID Application: Richard Landsberg"'
+
+    # Add syntax highlighting to zsh
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

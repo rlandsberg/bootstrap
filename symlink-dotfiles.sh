@@ -1,6 +1,8 @@
 #!/bin/bash
 # Most of this is from https://github.com/paulmillr/dotfiles/blob/master/symlink-dotfiles.sh
 
+echo "Remember to install Package Manager from https://packagecontrol.io/installation#st3"
+
 
 dotfiles="$HOME/dotfiles"
 
@@ -29,8 +31,6 @@ done
 
 rm -rf "$HOME/Library/Application\ Support/Sublime\ Text\ 3/User"
 ln -s "$HOME/Workspace/bootstrap/Sublime/User/ User"
-
-echo "Remember to install Package Manager from https://packagecontrol.io/installation#st3"
 
 # Setting up our iTerm2 preferences
 
