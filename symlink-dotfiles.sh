@@ -29,8 +29,10 @@ done
 
 # Setting up Sublime 3 Packages and settings
 
-rm -rf "$HOME/Library/Application\ Support/Sublime\ Text\ 3/User"
-ln -s "$HOME/Workspace/bootstrap/Sublime/User/ User"
+
+cd "$HOME/Library/Application Support/Sublime Text 3/Packages
+rm -rf 'User"
+ln -s "$HOME/dotfile/Sublime/User/ User"
 
 # Setting up our iTerm2 preferences
 
