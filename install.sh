@@ -71,11 +71,11 @@ echo "Added $USERNAME to sudoers"
 echo "Creating our directories"
 #Next we need to set up our directories
 sudo -u "$USERNAME" mkdir -p "/Users/$USERNAME/Workspace"
-sudo -u chown "$USERNAME" "/Users/$USERNAME/Workspace"
+sudo chown "$USERNAME" "/Users/$USERNAME/Workspace"
 echo "/Users/$USERNAME/Workspace"
 
 sudo -u "$USERNAME" mkdir -p "/Users/$USERNAME/Workspace/config"
-sudo -u chown "$USERNAME" "/Users/$USERNAME/Workspace/config"
+sudo chown "$USERNAME" "/Users/$USERNAME/Workspace/config"
 echo "/Users/$USERNAME/Workspace/config"
 
 
