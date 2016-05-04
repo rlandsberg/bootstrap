@@ -38,10 +38,11 @@ brew 'python3'
 brew 'tmux'
 brew 'zsh'
 brew 'zsh-completions'
+brew 'zsh-syntax-highlighting'
 brew 'argon/mas/mas'
 
 # Casks
-cask 'citrix-receiver'
+
 cask 'dhs'
 cask 'flux'
 cask 'font-source-code-pro'
@@ -61,6 +62,7 @@ cask 'vmware-fusion'
 cask 'tunnelblick'
 
 # Package installers last
+cask 'citrix-receiver'
 cask 'blockblock'
 cask 'santa'
 
