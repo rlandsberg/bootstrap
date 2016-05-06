@@ -71,11 +71,11 @@ echo "Added $USERNAME to sudoers"
 echo "Creating our directories"
 #Next we need to set up our directories
 sudo -u "$USERNAME" mkdir -p "/Users/$USERNAME/Workspace"
-sudo chown "$USERNAME" "/Users/$USERNAME/Workspace"
+#sudo chown "$USERNAME" "/Users/$USERNAME/Workspace"
 echo "/Users/$USERNAME/Workspace"
 
 sudo -u "$USERNAME" mkdir -p "/Users/$USERNAME/Workspace/config"
-sudo chown "$USERNAME" "/Users/$USERNAME/Workspace/config"
+#sudo chown "$USERNAME" "/Users/$USERNAME/Workspace/config"
 echo "/Users/$USERNAME/Workspace/config"
 
 
@@ -117,8 +117,8 @@ sudo -u "$USERNAME" git clone --recursive https://github.com/rlandsberg/bootstra
 # Moving our dotfiles and config up to our working directory.  Any changes can be copied back and synced to the repo
  
 echo "Copying our dotfiles to our working directories"
-cp -r "/Users/$USERNAME/Workspace/bootstrap/dotfiles" /Users/$USERNAME/dotfiles
-cp -r "/Users/$USERNAME/Workspace/bootstrap/config" /Users/$USERNAME/config
+sudo -u "$USERNAME" cp -r "/Users/$USERNAME/Workspace/bootstrap/dotfiles" /Users/$USERNAME/dotfiles
+sudo -u "$USERNAME" cp -r "/Users/$USERNAME/Workspace/bootstrap/config" /Users/$USERNAME/config
 
 sudo -u "$USERNAME" brew doctor
 
