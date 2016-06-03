@@ -29,12 +29,13 @@ done
 
 # Setting up Sublime 3 Packages and settings
 
+cd "$HOME/Library/Application\ Support/Sublime\ Text\ 3/"
 rm -rf "$HOME/Library/Application\ Support/Sublime\ Text\ 3/User"
-ln -s "$HOME/Workspace/bootstrap/Sublime/User/ User"
+ln -s "$HOME/Workspace/dotfiles/Sublime/User/ User"
 
 # Setting up our iTerm2 preferences
 
-defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/bootstrap/dotfiles"
+defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/dotfiles"
 
 # Add our applications to the Dock.
 
