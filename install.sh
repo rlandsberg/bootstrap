@@ -68,12 +68,20 @@ echo "Created user #$USERID: $USERNAME ($FULLNAME)"
 echo "$USERNAME     ALL=(ALL) ALL" >> /etc/sudoers
 echo "Added $USERNAME to sudoers"
 
+echo "Creating our directories"
 #Next we need to set up our directories
 sudo -u "$USERNAME" mkdir -p "/Users/$USERNAME/Workspace"
+#sudo chown "$USERNAME" "/Users/$USERNAME/Workspace"
+echo "/Users/$USERNAME/Workspace"
+
 sudo -u "$USERNAME" mkdir -p "/Users/$USERNAME/Workspace/config"
+#sudo chown "$USERNAME" "/Users/$USERNAME/Workspace/config"
+echo "/Users/$USERNAME/Workspace/config"
+
 
 # Let's install command line tools
 
+echo "Installing command line tools"
 touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
 PROD=$(softwareupdate -l |
   grep "\*.*Command Line" |
@@ -84,10 +92,12 @@ softwareupdate -i "$PROD" -v;
 
 # Install Homebrew as our admin account
 
+echo "Installing Homebrew"
 sudo -u "$SUDO_USER" ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"   </dev/null
 
 # Now let change our permissions so that our non-admin user can use Homebrew
 
+echo "Setting up Homebrew for our non-admin user"
 sudo chgrp -R brew /usr/local
 sudo chgrp -R brew /Library/Caches/Homebrew
 sudo chmod -R g+w /usr/local
@@ -100,13 +110,15 @@ sudo chmod -R g+w /opt/homebrew-cask
 
 # let's pull down our dotfiles and scripts
 
+echo "Syncing our dotfiles repo"
 cd "/Users/$USERNAME/Workspace" || exit
 sudo -u "$USERNAME" git clone --recursive https://github.com/rlandsberg/bootstrap.git
 
 # Moving our dotfiles and config up to our working directory.  Any changes can be copied back and synced to the repo
  
-cp -r "/Users/$USERNAME/Workspace/bootstrap/dotfiles" /Users/$USERNAME/dotfiles
-cp -r "/Users/$USERNAME/Workspace/bootstrap/config" /Users/$USERNAME/config
+echo "Copying our dotfiles to our working directories"
+sudo -u "$USERNAME" cp -r "/Users/$USERNAME/Workspace/bootstrap/dotfiles" /Users/$USERNAME/dotfiles
+sudo -u "$USERNAME" cp -r "/Users/$USERNAME/Workspace/bootstrap/config" /Users/$USERNAME/config
 
 sudo -u "$USERNAME" brew doctor
 
