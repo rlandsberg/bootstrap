@@ -30,3 +30,9 @@
 
     # Add syntax highlighting to zsh
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+    # Add our homebrew zsh-completions
+
+    fpath=(/usr/local/share/zsh-completions $fpath)
+    autoload -U compinit
+    compinit
